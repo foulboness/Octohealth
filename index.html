@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f7f5ff" />
+    <title>OctoHealth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="toast" class="toast" role="status"></div>
+    <main id="authView" class="auth-shell">
+      <section class="auth-art">
+        <div class="brand brand-light">
+          <span class="brand-mark">✳</span
+          ><span>OctoHealth</span></span>
+        </div>
+        <div class="art-copy">
+          <span class="eyebrow">CLARITY FOR EVERY CHARGE</span>
+          <h1>Your bill.<br /><em>Your understanding.</em></h1>
+          <p>
+            A calmer, clearer way to review medical bills, spot charges worth
+            questioning, and prepare your next steps.
+          </p>
+          <div class="art-stats">
+            <div><strong>01</strong><span>Upload a bill</span></div>
+            <div><strong>02</strong><span>Review flagged items</span></div>
+            <div><strong>03</strong><span>Prepare your query</span></div>
+          </div>
+        </div>
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-foot">PRIVATE BY DESIGN · DEMO WORKSPACE</div>
+      </section>
+      <section class="auth-panel">
+        <div class="auth-mobile-brand brand">
+          <span class="brand-mark">✳</span
+          ><span>OctoHealth</span>
+        </div>
+        <div class="auth-card">
+          <div class="auth-kicker">YOUR PERSONAL BILLING WORKSPACE</div>
+          <h2 id="authTitle">Welcome back</h2>
+          <p class="muted" id="authSubtitle">
+            Sign in to continue reviewing your bills.
+          </p>
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-auth-mode="login">
+              Sign in</button
+            ><button class="auth-tab" data-auth-mode="signup">
+              Create account
+            </button>
+          </div>
+          <form id="authForm" class="auth-form">
+            <label id="nameWrap" class="field hidden"
+              >Full name<input
+                id="authName"
+                autocomplete="name"
+                placeholder="Your name"
+            /></label>
+            <label class="field"
+              >Email address<input
+                id="authEmail"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+            /></label>
+            <label class="field"
+              >Password
+              <div class="password-wrap">
+                <input
+                  id="authPassword"
+                  type="password"
+                  minlength="4"
+                  autocomplete="current-password"
+                  placeholder="At least 4 characters"
+                  required
+                /><button
+                  type="button"
+                  class="password-toggle"
+                  id="togglePassword"
+                  aria-label="Show password"
+                >
+                  ◉
+                </button>
+              </div></label
+            >
+            <div id="authNote" class="auth-note">
+              Demo mode: your account stays in this browser only.
+            </div>
+            <button
+              class="btn btn-primary btn-wide"
+              type="submit"
+              id="authSubmit"
+            >
+              Sign in <span>→</span>
+            </button>
+          </form>
+          <p class="auth-legal">
+            By continuing, you understand this is a local demo and not a secure
+            medical-record system.
+          </p>
+        </div>
+        <div class="auth-bottom">
+          Thoughtful tools for more confident billing conversations.
+        </div>
+      </section>
+    </main>
+
+    <div id="appView" class="app-shell hidden">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand sidebar-brand">
+          <span class="brand-mark">✳</span
+          ><span>OctoHealth</span>
+        </div>
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="nav-list" id="navList">
+          <button class="nav-item active" data-page="overview">
+            <span class="nav-icon">⌂</span> Overview
+          </button>
+          <button class="nav-item" data-page="checker">
+            <span class="nav-icon">⌕</span> Code Checker
+            <span class="nav-count" id="flagNavCount">0</span>
+          </button>
+          <button class="nav-item" data-page="bills">
+            <span class="nav-icon">▤</span> My Bills
+          </button>
+          <button class="nav-item" data-page="savings">
+            <span class="nav-icon">↗</span> Savings Insights
+          </button>
+         
+          <div class="nav-separator"></div>
+          <div class="workspace-label">RESOURCES</div>
+          <button class="nav-item" data-page="guide">
+            <span class="nav-icon">▧</span> Billing Guide
+          </button>
+          <button class="nav-item" data-page="letters">
+            <span class="nav-icon">✉</span> Dispute Letter Studio
+          </button>
+          <button class="nav-item" data-page="help">
+            <span class="nav-icon">?</span> Help & Support
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+        
+          <button class="nav-item" data-page="settings">
+            <span class="nav-icon">⚙</span> Settings</button
+          ><button class="logout-button" id="logoutButton" type="button">
+            <span class="logout-icon">↪</span><span>Log out</span></button
+          ><button
+            class="profile-row"
+            id="profileButton"
+            title="Account options"
+          >
+
+          
+            <span class="avatar" id="profileAvatar">M</span
+            ><span class="profile-meta"
+              ><strong id="profileName">Demo User</strong
+              ><small id="profileEmail">demo@example.com</small></span
+            ><span class="profile-more">···</span>
+          </button>
+        </div>
+      </aside>
+      <div class="main-column">
+        <header class="topbar">
+          <button
+            class="mobile-menu"
+            id="mobileMenu"
+            aria-label="Toggle navigation"
+          >
+            ☰
+          </button>
+          <div class="breadcrumb">
+            <span>Workspace</span><span class="crumb-slash">/</span
+            ><strong id="pageCrumb">Overview</strong>
+          </div>
+          <div class="top-actions">
+            <span class="today-label" id="todayLabel"></span
+            ><button
+              class="icon-button"
+              id="themeToggle"
+              title="Toggle theme"
+              aria-label="Toggle theme"
+            >
+              ☾</button
+            ><button class="top-avatar" id="topAvatar">M</button>
+          </div>
+        </header>
+        <main class="content-area" id="contentArea">
+          <section class="page active" id="page-overview">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">YOUR BILLING OVERVIEW</div>
+                <h1>
+                  Good to see you, <span id="greetingName">there</span
+                  ><span class="heading-sparkle">✳</span>
+                </h1>
+                <p class="muted">
+                  A clearer picture of what needs your attention.
+                </p>
+              </div>
+              <button class="btn btn-primary" data-action="upload">
+                <span>＋</span> Upload a bill
+              </button>
+            </div>
+            <div class="notice-strip">
+              <span class="notice-icon">✦</span>
+              <div>
+                <strong>Knowledge is your first line of defense.</strong
+                ><span
+                  >Flags are prompts to verify — not proof that a charge is
+                  wrong.</span
+                >
+              </div>
+              <button class="text-button" data-page="guide">
+                Learn more →
+              </button>
+            </div>
+            <div class="stats-grid">
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Bills reviewed</span
+                  ><span class="stat-icon lilac">▤</span>
+                </div>
+                <strong class="stat-value" id="statReviewed">0</strong
+                ><small><span class="stat-dot"></span>Completed analyses</small>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Charges to investigate</span
+                  ><span class="stat-icon peach">⌕</span>
+                </div>
+                <strong class="stat-value" id="statFlags">0</strong
+                ><small>Across your saved reviews</small>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Amount under review</span
+                  ><span class="stat-icon mint">↗</span>
+                </div>
+                <strong class="stat-value" id="statAmount">R 0.00</strong
+                ><small>Not confirmed savings</small>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Awaiting follow-up</span
+                  ><span class="stat-icon blue">◷</span>
+                </div>
+                <strong class="stat-value" id="statPending">0</strong
+                ><small>Items marked for review</small>
+              </article>
+            </div>
+            <div class="dashboard-grid">
+              <section class="panel recent-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Recent bills</h3>
+                    <p>Your latest documents and review statuses</p>
+                  </div>
+                  <button class="text-button" data-page="bills">
+                    View all →
+                  </button>
+                </div>
+                <div id="recentBills" class="recent-list"></div>
+              </section>
+              <section class="panel quick-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Quick actions</h3>
+                    <p>Pick up where you left off</p>
+                  </div>
+                </div>
+                <button class="quick-action" data-action="upload">
+                  <span class="quick-icon lavender">＋</span
+                  ><span
+                    ><strong>Review a new bill</strong
+                    ><small>Upload a PDF or image</small></span
+                  ><span class="quick-arrow">↗</span></button
+                ><button class="quick-action" data-page="checker">
+                  <span class="quick-icon peach">⌕</span
+                  ><span
+                    ><strong>Check a billing code</strong
+                    ><small>Look up a code and its context</small></span
+                  ><span class="quick-arrow">↗</span></button
+                ><button class="quick-action" data-page="letters">
+                  <span class="quick-icon mint">✉</span
+                  ><span
+                    ><strong>Draft a dispute letter</strong
+                    ><small>Prepare a question for the provider</small></span
+                  ><span class="quick-arrow">↗</span>
+                </button>
+                <div class="tip-box">
+                  <span>✦</span>
+                  <p>
+                    <strong>Helpful tip</strong><br />Ask for an itemized bill
+                    and the code descriptions if anything is unclear.
+                  </p>
+                </div>
+              </section>
+            </div>
+            <section class="panel workflow-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Your review journey</h3>
+                  <p>Four practical steps to a clearer bill</p>
+                </div>
+                <span class="soft-pill">RECOMMENDED</span>
+              </div>
+              <div class="workflow-steps">
+                <div class="workflow-step">
+                  <span>01</span><strong>Collect</strong
+                  ><small>Get an itemized statement</small>
+                </div>
+                <div class="workflow-line"></div>
+                <div class="workflow-step">
+                  <span>02</span><strong>Compare</strong
+                  ><small>Check codes and quantities</small>
+                </div>
+                <div class="workflow-line"></div>
+                <div class="workflow-step">
+                  <span>03</span><strong>Clarify</strong
+                  ><small>Ask for supporting details</small>
+                </div>
+                <div class="workflow-line"></div>
+                <div class="workflow-step">
+                  <span>04</span><strong>Document</strong
+                  ><small>Keep a written record</small>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <section class="page" id="page-checker">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">BILLING REVIEW</div>
+                <h1>Code Checker</h1>
+                <p class="muted">
+                  Find potential discrepancies and the next step to verify them.
+                </p>
+              </div>
+              <button class="btn btn-primary" data-action="upload">
+                ＋ Analyze a bill
+              </button>
+            </div>
+            <div class="checker-search panel">
+              <div class="search-wrap">
+                <span>⌕</span
+                ><input
+                  id="codeSearch"
+                  placeholder="Search code, description, or possible issue…"
+                />
+              </div>
+              <select id="severityFilter" aria-label="Filter by severity">
+                <option value="all">All priorities</option>
+                <option value="high">High priority</option>
+                <option value="medium">Needs review</option>
+                <option value="low">Informational</option></select
+              ><select id="codeBillFilter" aria-label="Filter by bill">
+                <option value="all">All bills</option>
+              </select>
+            </div>
+            <div class="panel table-panel">
+              <div class="table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>CODE / DESCRIPTION</th>
+                      <th>POSSIBLE ISSUE</th>
+                      <th>AMOUNT</th>
+                      <th>PRIORITY</th>
+                      <th>REVIEW STATUS</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="codeTableBody"></tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                <span id="codeResultCount">0 line items</span
+                ><span>Flags require human verification.</span>
+              </div>
+            </div>
+            <div class="disclaimer-inline">
+              ⓘ Code descriptions and issue rules are illustrative demo checks.
+              They do not replace official code-set validation or professional
+              billing advice.
+            </div>
+          </section>
+
+          <section class="page" id="page-bills">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">DOCUMENT LIBRARY</div>
+                <h1>My Bills</h1>
+                <p class="muted">
+                  Keep statements, reviews, and follow-ups organized in one
+                  place.
+                </p>
+              </div>
+              <button class="btn btn-primary" data-action="upload">
+                ＋ Upload a bill
+              </button>
+            </div>
+            <div class="bill-toolbar panel">
+              <div class="search-wrap">
+                <span>⌕</span
+                ><input
+                  id="billSearch"
+                  placeholder="Search bills or providers…"
+                />
+              </div>
+              <select id="billStatusFilter">
+                <option value="all">All statuses</option>
+                <option value="Needs review">Needs review</option>
+                <option value="Reviewed">Reviewed</option>
+                <option value="Follow-up">Follow-up</option>
+              </select>
+              <div class="view-toggle">
+                <button class="view-btn active" data-bill-view="grid">▦</button
+                ><button class="view-btn" data-bill-view="list">☷</button>
+              </div>
+            </div>
+            <div id="billsGrid" class="bills-grid"></div>
+            <div id="billsEmpty" class="empty-state hidden">
+              <span class="empty-icon">▤</span>
+              <h3>No bills found</h3>
+              <p>Upload a statement or change your search filters.</p>
+              <button class="btn btn-secondary" data-action="upload">
+                Upload your first bill
+              </button>
+            </div>
+          </section>
+
+          <section class="page" id="page-savings">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">INVESTIGATION TRACKER</div>
+                <h1>Savings Insights</h1>
+                <p class="muted">
+                  Track the value of charges you have flagged to question.
+                </p>
+              </div>
+            </div>
+            <div class="insights-hero">
+              <div>
+                <span class="insights-label"
+                  >TOTAL CHARGES FLAGGED FOR INVESTIGATION</span
+                ><strong id="insightAmount">R 0.00</strong>
+                <p>
+                  This is the value of flagged charges,
+                  <b>not confirmed savings</b>.
+                </p>
+              </div>
+              <div class="insights-art">↗<span>?</span></div>
+            </div>
+            <div class="stats-grid insights-stats">
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Flagged line items</span
+                  ><span class="stat-icon peach">⌕</span>
+                </div>
+                <strong class="stat-value" id="insightFlags">0</strong
+                ><small>Potential discrepancies</small>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Awaiting verification</span
+                  ><span class="stat-icon blue">◷</span>
+                </div>
+                <strong class="stat-value" id="insightOpen">0</strong
+                ><small>Not yet resolved</small>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span>Resolved items</span
+                  ><span class="stat-icon mint">✓</span>
+                </div>
+                <strong class="stat-value" id="insightResolved">0</strong
+                ><small>Marked reviewed or explained</small>
+              </article>
+            </div>
+            <div class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Flagged charges by bill</h3>
+                  <p>Amounts are shown in your selected currency.</p>
+                </div>
+                <button class="text-button" data-page="checker">
+                  Review line items →
+                </button>
+              </div>
+              <div id="savingsBreakdown" class="breakdown-list"></div>
+            </div>
+            <div class="disclaimer-inline">
+              Do not treat flagged amounts as recoverable money until the
+              provider or payer confirms an adjustment.
+            </div>
+          </section>
+
+          <section class="page" id="page-history">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">YOUR AUDIT TRAIL</div>
+                <h1>Audit History</h1>
+                <p class="muted">
+                  Reopen a previous review and revisit its findings.
+                </p>
+              </div>
+              <button class="btn btn-secondary" id="exportHistory">
+                ↓ Export history
+              </button>
+            </div>
+            <div class="panel history-panel">
+              <div class="panel-heading">
+                <div>
+                  <h3>Previous analyses</h3>
+                  <p>Saved locally in this browser</p>
+                </div>
+                <span class="soft-pill" id="historyCount">0 RECORDS</span>
+              </div>
+              <div id="historyList" class="history-list"></div>
+            </div>
+          </section>
+
+          <section class="page" id="page-guide">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">KNOW WHAT TO ASK</div>
+                <h1>Billing Guide</h1>
+                <p class="muted">
+                  Understand common billing terms and ask clear, useful
+                  questions.
+                </p>
+              </div>
+            </div>
+            <div class="guide-layout">
+              <div class="panel guide-main">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Billing basics</h3>
+                    <p>Start with the language on your statement.</p>
+                  </div>
+                </div>
+                <div class="guide-accordion" id="guideAccordion">
+                  <details open>
+                    <summary>What is a billing code?</summary>
+                    <p>
+                      A billing code identifies a service, procedure, supply, or
+                      diagnosis for billing and reporting. Code systems vary by
+                      country and payer. Ask the provider which code set and
+                      year applies to your statement.
+                    </p>
+                  </details>
+                  <details>
+                    <summary>What is a duplicate charge?</summary>
+                    <p>
+                      Two similar entries can sometimes be valid—for example,
+                      separate dates, units, or providers. Ask whether the
+                      entries represent distinct services and request the dates,
+                      quantities, and documentation supporting each one.
+                    </p>
+                  </details>
+                  <details>
+                    <summary>What is an explanation of benefits (EOB)?</summary>
+                    <p>
+                      An EOB is typically a payer's explanation of how a claim
+                      was processed. It is generally not itself a bill. Compare
+                      its allowed amount, adjustments, and patient
+                      responsibility with the provider statement.
+                    </p>
+                  </details>
+                  <details>
+                    <summary>What does “out of network” mean?</summary>
+                    <p>
+                      It generally refers to a provider or facility that does
+                      not have a contract with a health plan. The financial
+                      impact depends on your plan, local rules, and the
+                      circumstances of care.
+                    </p>
+                  </details>
+                  <details>
+                    <summary>
+                      What should I do if a code looks unfamiliar?
+                    </summary>
+                    <p>
+                      Request the plain-language description, service date,
+                      units, ordering clinician, and documentation supporting
+                      the charge. An unfamiliar code alone does not prove an
+                      error.
+                    </p>
+                  </details>
+                  <details>
+                    <summary>What is an itemized bill?</summary>
+                    <p>
+                      A statement listing individual services, supplies,
+                      quantities, codes, and charges. It is often more useful
+                      for reviewing than a single total balance.
+                    </p>
+                  </details>
+                </div>
+              </div>
+              <aside class="panel guide-aside">
+                <span class="guide-badge">CONVERSATION STARTER</span>
+                <h3>Questions worth asking</h3>
+                <ul class="question-list">
+                  <li>Can you provide an itemized statement?</li>
+                  <li>What service does this code represent?</li>
+                  <li>Why does this item appear more than once?</li>
+                  <li>What date and quantity does this charge cover?</li>
+                  <li>Can you explain the adjustment and patient balance?</li>
+                  <li>
+                    Can the account be placed on hold while this is reviewed?
+                  </li>
+                </ul>
+                <button class="btn btn-primary btn-wide" data-page="letters">
+                  Draft a query letter →
+                </button>
+              </aside>
+            </div>
+          </section>
+
+          <section class="page" id="page-letters">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">CLEAR, PROFESSIONAL FOLLOW-UP</div>
+                <h1>Dispute Letter Studio</h1>
+                <p class="muted">
+                  Draft a request for clarification using your review findings.
+                </p>
+              </div>
+              <button class="btn btn-secondary" id="resetLetter">
+                Reset draft
+              </button>
+            </div>
+            <div class="letter-layout">
+              <section class="panel letter-form-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Letter details</h3>
+                    <p>Fill in what you know; leave the rest blank.</p>
+                  </div>
+                </div>
+                <form id="letterForm" class="letter-form">
+                  <div class="form-row">
+                    <label class="field"
+                      >Your name<input
+                        id="letterName"
+                        placeholder="Full name" /></label
+                    ><label class="field"
+                      >Hospital / provider<input
+                        id="letterProvider"
+                        placeholder="Provider name"
+                    /></label>
+                  </div>
+                  <div class="form-row">
+                    <label class="field"
+                      >Account or invoice number<input
+                        id="letterAccount"
+                        placeholder="Optional reference" /></label
+                    ><label class="field"
+                      >Bill date<input id="letterDate" type="date"
+                    /></label>
+                  </div>
+                  <label class="field"
+                    >Charges to query<textarea
+                      id="letterCharges"
+                      rows="3"
+                      placeholder="e.g. Code ABC123 — please explain the service and quantity billed."
+                    ></textarea></label
+                  ><label class="field"
+                    >What would you like clarified?<select id="letterReason">
+                      <option>
+                        Request for itemized bill and code descriptions
+                      </option>
+                      <option>Possible duplicate charge</option>
+                      <option>Quantity or unit discrepancy</option>
+                      <option>Charge not recognized</option>
+                      <option>
+                        Difference between statement and insurance explanation
+                      </option>
+                      <option>Other billing concern</option>
+                    </select></label
+                  ><label class="field"
+                    >Additional details<textarea
+                      id="letterDetails"
+                      rows="3"
+                      placeholder="Explain what you noticed and attach supporting documents when sending."
+                    ></textarea>
+                  </label>
+                  <div class="letter-form-actions">
+                    <button class="btn btn-primary" type="submit">
+                      Generate letter preview →</button
+                    ><button
+                      class="btn btn-secondary"
+                      type="button"
+                      id="useFlags"
+                    >
+                      Use flagged items
+                    </button>
+                  </div>
+                </form>
+              </section>
+              <section class="panel letter-preview-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Letter preview</h3>
+                    <p>Review and edit the draft before sending.</p>
+                  </div>
+                  <button class="text-button" id="copyLetter">Copy text</button>
+                </div>
+                <textarea
+                  id="letterPreview"
+                  class="letter-preview"
+                  aria-label="Editable letter preview"
+                  spellcheck="true"
+                ></textarea>
+                <div class="preview-actions">
+                  <button class="btn btn-secondary" id="downloadLetter">
+                    ↓ Download .txt</button
+                  ><span class="muted small-text"
+                    >No letter is sent automatically.</span
+                  >
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="page" id="page-settings">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">MAKE IT YOURS</div>
+                <h1>Settings</h1>
+                <p class="muted">
+                  Manage your demo profile and workspace preferences.
+                </p>
+              </div>
+              <button class="btn btn-primary" id="saveSettings">
+                Save changes
+              </button>
+            </div>
+            <div class="settings-layout">
+              <section class="panel settings-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Profile</h3>
+                    <p>Local demo account details</p>
+                  </div>
+                </div>
+                <div class="settings-form">
+                  <label class="field"
+                    >Display name<input
+                      id="settingName"
+                      placeholder="Your name" /></label
+                  ><label class="field"
+                    >Email address<input
+                      id="settingEmail"
+                      type="email"
+                      placeholder="you@example.com"
+                  /></label>
+                </div>
+                <div class="panel-heading settings-subheading">
+                  <div>
+                    <h3>Display preferences</h3>
+                    <p>Choose how figures and the workspace appear.</p>
+                  </div>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Currency</strong>
+                    <p>Used to display amounts in this demo.</p>
+                  </div>
+                  <select id="settingCurrency">
+                    <option value="ZAR">ZAR — South African rand</option>
+                    <option value="USD">USD — US dollar</option>
+                    <option value="GBP">GBP — British pound</option>
+                    <option value="EUR">EUR — Euro</option>
+                  </select>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Compact dashboard</strong>
+                    <p>Keep panels and spacing tighter.</p>
+                  </div>
+                  <label class="switch"
+                    ><input
+                      id="settingCompact"
+                      type="checkbox"
+                      checked /><span></span
+                  ></label>
+                </div>
+                <div class="setting-row">
+                  <div>
+                    <strong>Dark appearance</strong>
+                    <p>Use a darker workspace theme.</p>
+                  </div>
+                  <label class="switch"
+                    ><input id="settingDark" type="checkbox" /><span></span
+                  ></label>
+                </div>
+              </section>
+              <section class="panel settings-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h3>Data & privacy</h3>
+                    <p>Understand what this demo stores.</p>
+                  </div>
+                </div>
+                <div class="privacy-detail">
+                  <span class="privacy-icon large">♧</span>
+                  <div>
+                    <strong>Stored in this browser</strong>
+                    <p>
+                      Demo profile, review metadata, and audit findings use
+                      local browser storage. Files are not uploaded to a secure
+                      server. Avoid real patient-identifying information in this
+                      prototype.
+                    </p>
+                  </div>
+                </div>
+                <div class="settings-actions">
+                  <button class="btn btn-secondary" id="exportData">
+                    Export demo data</button
+                  ><button class="btn btn-danger-ghost" id="clearData">
+                    Clear demo data
+                  </button>
+                </div>
+                <div class="disclaimer-inline">
+                  Local storage is not encrypted medical-record storage. This
+                  demo does not provide secure authentication, official code
+                  verification, or clinical advice.
+                </div>
+              </section>
+            </div>
+          </section>
+
+          <section class="page" id="page-help">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">WE'RE HERE TO HELP</div>
+                <h1>Help & Support</h1>
+                <p class="muted">
+                  A practical guide to reviewing a bill and following up.
+                </p>
+              </div>
+            </div>
+            <div class="help-cards">
+              <article class="panel help-card">
+                <span class="help-icon lavender">01</span>
+                <h3>Before you start</h3>
+                <p>
+                  Gather the itemized bill, any explanation of benefits,
+                  receipts, and relevant dates. Keep a copy of everything you
+                  send.
+                </p>
+                <button class="text-button" data-page="guide">
+                  Read billing guide →
+                </button>
+              </article>
+              <article class="panel help-card">
+                <span class="help-icon peach">02</span>
+                <h3>When you find a concern</h3>
+                <p>
+                  Record the code, line-item description, amount, and why it
+                  needs clarification. Ask neutral questions before alleging an
+                  error.
+                </p>
+                <button class="text-button" data-page="checker">
+                  Review flagged items →
+                </button>
+              </article>
+              <article class="panel help-card">
+                <span class="help-icon mint">03</span>
+                <h3>When contacting a provider</h3>
+                <p>
+                  Use the provider's official billing contact. Ask for a
+                  reference number and whether the disputed balance can be
+                  paused during review.
+                </p>
+                <button class="text-button" data-page="letters">
+                  Create a letter →
+                </button>
+              </article>
+              <article class="panel help-card">
+                <span class="help-icon blue">04</span>
+                <h3>Protect your information</h3>
+                <p>
+                  Only share necessary information through verified, secure
+                  channels. Redact unrelated personal details from documents
+                  where appropriate.
+                </p>
+                <button class="text-button" data-page="settings">
+                  Privacy settings →
+                </button>
+              </article>
+            </div>
+            <section class="panel support-panel">
+              <div>
+                <h3>Important limitation</h3>
+                <p>
+                  OctoHealth is a frontend demonstration. It uses transparent,
+                  basic checks on entered line items; it does not perform real
+                  OCR, connect to official billing-code databases, submit
+                  insurance claims, or provide legal advice.
+                </p>
+              </div>
+              <span class="support-mark">✳</span>
+            </section>
+          </section>
+        </main>
+        <footer class="app-footer">
+          <span>© 2026 OctoHealth · Clarity, not assumptions.</span
+          ><span>DEMO WORKSPACE <i></i> LOCAL MODE</span>
+        </footer>
+      </div>
+    </div>
+
+    <input type="file" id="fileInput" accept=".pdf,image/*" multiple hidden />
+    <div id="uploadModal" class="modal-backdrop hidden">
+      <section
+        class="modal upload-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="uploadTitle"
+      >
+        <button class="modal-close" data-close-modal aria-label="Close">
+          ×
+        </button>
+        <div class="modal-icon">↑</div>
+        <div class="eyebrow">ADD TO YOUR WORKSPACE</div>
+        <h2 id="uploadTitle">Upload a bill</h2>
+        <p class="muted">
+          Choose a PDF or image statement. Files stay in this browser demo; they
+          are not securely uploaded.
+        </p>
+        <div id="dropZone" class="drop-zone">
+          <span class="drop-icon">▧</span><strong>Drop your files here</strong
+          ><span>PDF, PNG, JPG, WEBP · select one or more</span
+          ><button class="btn btn-secondary" id="browseFiles" type="button">
+            Browse files
+          </button>
+        </div>
+        <div id="uploadFileList" class="upload-file-list"></div>
+        <div class="modal-fields">
+          <label class="field"
+            >Provider / hospital<input
+              id="uploadProvider"
+              placeholder="e.g. City Medical Centre" /></label
+          ><label class="field"
+            >Bill reference (optional)<input
+              id="uploadReference"
+              placeholder="Invoice or account number" /></label
+          ><label class="field"
+            >Bill total (optional)<input
+              id="uploadAmount"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="0.00"
+          /></label>
+        </div>
+        <div class="upload-note">
+          For this demo, uploading stores the file name and review record only.
+          PDF/image text is not automatically extracted; add line items manually
+          in the next step.
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-secondary" data-close-modal>Cancel</button
+          ><button class="btn btn-primary" id="createBill" disabled>
+            Add bill & review →
+          </button>
+        </div>
+      </section>
+    </div>
+    <div id="detailModal" class="modal-backdrop hidden">
+      <section class="modal detail-modal" role="dialog" aria-modal="true">
+        <button class="modal-close" data-close-modal aria-label="Close">
+          ×
+        </button>
+        <div id="detailContent"></div>
+      </section>
+    </div>
+
+    <div class="logout-overlay" id="logoutModal" hidden>
+  <div
+    class="logout-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="logoutTitle"
+  >
+   
+
+    <h2 id="logoutTitle">Leaving so soon?</h2>
+
+    <p>
+      Are you sure you want to log out?
+      Your saved demo bills and reviews will stay in this browser. ♡
+    </p>
+
+    <div class="logout-actions">
+      <button class="logout-cancel" id="cancelLogout" type="button">
+        Stay a little longer
+      </button>
+
+      <button class="logout-confirm" id="confirmLogout" type="button">
+        Yes, log out
+      </button>
+    </div>
+
+    <span class="logout-footer">take care of yourself ♡</span>
+  </div>
+</div>
+    <script src="app.js"></script>
+
+    
+  </body>
+</html>
