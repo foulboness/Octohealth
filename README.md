@@ -1,6 +1,6 @@
 # Octohealth
 
-A responsive, frontend-only hospital billing review workspace built with HTML, CSS, and vanilla JavaScript.
+Built with HTML, CSS, and vanilla JavaScript.
 
 ## Features
 
